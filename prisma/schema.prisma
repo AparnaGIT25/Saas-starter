@@ -21,10 +21,10 @@ model User {
   id             String       @id @default(cuid())
   email          String       @unique
   password       String
-  name           String
+  name           String?
   role           Role         @default(MEMBER)
-  organizationId String
-  organization   Organization @relation(fields: [organizationId], references: [id])
+  organizationId String?
+  organization   Organization? @relation(fields: [organizationId], references: [id])
   createdAt      DateTime     @default(now())
 }
 
