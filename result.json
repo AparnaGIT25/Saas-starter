@@ -1,0 +1,84 @@
+[
+  {
+    "step": "Registering user",
+    "status": 201,
+    "data": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbXBlZHh0ZnAwMDAwZ2ZjY2c3cGYyd2ZvIiwiZW1haWwiOiJ0ZXN0LTE3NzkzMDExMDY2NzhAZXhhbXBsZS5jb20iLCJyb2xlIjoiTUVNQkVSIiwiaWF0IjoxNzc5MzAxMTA4LCJleHAiOjE3Nzk5MDU5MDh9.moDvBHRoZiSIcVtUeQliv8Uj5wbFJ6XZnEGjx6U_7f8",
+      "user": {
+        "id": "cmpedxtfp0000gfccg7pf2wfo",
+        "email": "test-1779301106678@example.com",
+        "role": "MEMBER"
+      }
+    }
+  },
+  {
+    "step": "Logging in",
+    "status": 201,
+    "data": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbXBlZHh0ZnAwMDAwZ2ZjY2c3cGYyd2ZvIiwiZW1haWwiOiJ0ZXN0LTE3NzkzMDExMDY2NzhAZXhhbXBsZS5jb20iLCJyb2xlIjoiTUVNQkVSIiwiaWF0IjoxNzc5MzAxMTA4LCJleHAiOjE3Nzk5MDU5MDh9.moDvBHRoZiSIcVtUeQliv8Uj5wbFJ6XZnEGjx6U_7f8",
+      "user": {
+        "id": "cmpedxtfp0000gfccg7pf2wfo",
+        "email": "test-1779301106678@example.com",
+        "role": "MEMBER"
+      }
+    }
+  },
+  {
+    "step": "Creating Organization",
+    "status": 201,
+    "data": {
+      "id": "cmpedxuvr0001gfccde6wb2rr",
+      "name": "My Test Org",
+      "slug": "org-1779301108773",
+      "plan": "FREE",
+      "createdAt": "2026-05-20T18:18:29.655Z",
+      "updatedAt": "2026-05-20T18:18:29.655Z"
+    }
+  },
+  {
+    "step": "Getting My Organization",
+    "status": 200,
+    "data": {
+      "id": "cmpedxuvr0001gfccde6wb2rr",
+      "name": "My Test Org",
+      "slug": "org-1779301108773",
+      "plan": "FREE",
+      "createdAt": "2026-05-20T18:18:29.655Z",
+      "updatedAt": "2026-05-20T18:18:29.655Z"
+    }
+  },
+  {
+    "step": "Updating My Organization",
+    "status": 200,
+    "data": {
+      "id": "cmpedxuvr0001gfccde6wb2rr",
+      "name": "Updated Org Name",
+      "slug": "org-1779301108773",
+      "plan": "FREE",
+      "createdAt": "2026-05-20T18:18:29.655Z",
+      "updatedAt": "2026-05-20T18:18:31.215Z"
+    }
+  },
+  {
+    "step": "Getting Organization Members",
+    "status": 200,
+    "data": [
+      {
+        "id": "cmpedxtfp0000gfccg7pf2wfo",
+        "email": "test-1779301106678@example.com",
+        "name": "Test User",
+        "role": "OWNER",
+        "createdAt": "2026-05-20T18:18:27.775Z"
+      }
+    ]
+  },
+  {
+    "step": "Trying to remove OWNER (should fail)",
+    "status": 403,
+    "data": {
+      "message": "Cannot remove the organization owner",
+      "error": "Forbidden",
+      "statusCode": 403
+    }
+  }
+]

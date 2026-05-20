@@ -8,6 +8,7 @@ datasource db {
 
 }
 
+
 model Organization {
   id        String   @id @default(cuid())
   name      String
@@ -15,17 +16,23 @@ model Organization {
   plan      Plan     @default(FREE)
   users     User[]
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("organizations")
 }
 
 model User {
-  id             String       @id @default(cuid())
-  email          String       @unique
+  id             String        @id @default(cuid())
+  email          String        @unique
   password       String
   name           String?
-  role           Role         @default(MEMBER)
+  role           Role          @default(MEMBER)
   organizationId String?
   organization   Organization? @relation(fields: [organizationId], references: [id])
-  createdAt      DateTime     @default(now())
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  @@map("users")
 }
 
 enum Role {
