@@ -17,11 +17,14 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
         });
     }
 
-    async validate(payload: { sub: string; email: string }) {
+    async validate(payload: { sub: string; email: string; role: string }) {
         const user = await this.usersService.findById(payload.sub);
         if (!user) throw new UnauthorizedException();
 
+        // Always read role from DB, not token
+        // Why? If admin gets demoted, old token still says ADMIN
+        // Reading from DB means the change takes effect immediately
         const { password, ...result } = user;
-        return result;
+        return result; // this becomes req.user — includes role from DB
     }
 }

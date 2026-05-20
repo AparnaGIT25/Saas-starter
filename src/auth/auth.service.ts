@@ -1,6 +1,7 @@
 import { Injectable, ConflictException, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
+import { Role } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
@@ -29,7 +30,7 @@ export class AuthService {
         });
 
         // 4. Return a JWT token immediately (user is logged in after register)
-        return this.signToken(user.id, user.email);
+        return this.signToken(user.id, user.email, user.role);
     }
 
     async login(email: string, password: string) {
@@ -48,16 +49,15 @@ export class AuthService {
         }
 
         // 3. Return JWT token
-        return this.signToken(user.id, user.email);
+        return this.signToken(user.id, user.email, user.role);
     }
 
     // Private helper — creates and signs the JWT
-    private signToken(userId: string, email: string) {
-        const payload = { sub: userId, email };
-        // 'sub' is JWT standard for "subject" = who this token is about
+    private signToken(userId: string, email: string, role: Role) {
+        const payload = { sub: userId, email, role };  // role now exists in scope
         return {
             access_token: this.jwtService.sign(payload),
-            user: { id: userId, email },
+            user: { id: userId, email, role },         // role now exists in scope
         };
     }
 }
