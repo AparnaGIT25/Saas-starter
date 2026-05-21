@@ -1,0 +1,78 @@
+[
+  {
+    "step": "Registering Owner",
+    "status": 201,
+    "data": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbXBmcmxvbjUwMDAwZ2Y5b3YxaWE5cWdiIiwiZW1haWwiOiJvd25lci0xNzc5Mzg0NTIwMTg0QGV4YW1wbGUuY29tIiwicm9sZSI6Ik1FTUJFUiIsImlhdCI6MTc3OTM4NDUyMywiZXhwIjoxNzc5OTg5MzIzfQ.20y5rlsRIJVG5voAX2OhW4MUEmP3_U4WUMwRBGUR6JA",
+      "user": {
+        "id": "cmpfrlon50000gf9ov1ia9qgb",
+        "email": "owner-1779384520184@example.com",
+        "role": "MEMBER"
+      }
+    }
+  },
+  {
+    "step": "Creating Organization",
+    "status": 201,
+    "data": {
+      "id": "cmpfrlrk20001gf9ob7xozmid",
+      "name": "My Test Org",
+      "slug": "org-1779384524684",
+      "plan": "FREE",
+      "createdAt": "2026-05-21T17:28:46.275Z",
+      "updatedAt": "2026-05-21T17:28:46.275Z"
+    }
+  },
+  {
+    "step": "Sending Invite",
+    "status": 201,
+    "data": {
+      "message": "Invite sent successfully to invited-1779384527857@example.com",
+      "inviteId": "cmpfrlvgo0003gf9oo407puri"
+    }
+  },
+  {
+    "step": "Listing Pending Invites",
+    "status": 200,
+    "data": [
+      {
+        "id": "cmpfrlvgo0003gf9oo407puri",
+        "email": "invited-1779384527857@example.com",
+        "role": "MEMBER",
+        "createdAt": "2026-05-21T17:28:51.336Z",
+        "expiresAt": "2026-05-28T17:28:51.335Z"
+      }
+    ]
+  },
+  {
+    "step": "Registering Invited User",
+    "status": 201,
+    "data": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbXBmcmx6dXIwMDA0Z2Y5b3kxZXFpemRrIiwiZW1haWwiOiJpbnZpdGVkLTE3NzkzODQ1Mjc4NTdAZXhhbXBsZS5jb20iLCJyb2xlIjoiTUVNQkVSIiwiaWF0IjoxNzc5Mzg0NTM3LCJleHAiOjE3Nzk5ODkzMzd9.9g6Z2h8e85p6S3Xx8SU24VMyuqxtTJNFIvK0wK3P0wc",
+      "user": {
+        "id": "cmpfrlzur0004gf9oy1eqizdk",
+        "email": "invited-1779384527857@example.com",
+        "role": "MEMBER"
+      }
+    }
+  },
+  {
+    "step": "Accepting Invite",
+    "status": 201,
+    "data": {
+      "message": "You have successfully joined the organization"
+    }
+  },
+  {
+    "step": "Checking User 2 Organization",
+    "status": 200,
+    "data": {
+      "id": "cmpfrlrk20001gf9ob7xozmid",
+      "name": "My Test Org",
+      "slug": "org-1779384524684",
+      "plan": "FREE",
+      "createdAt": "2026-05-21T17:28:46.275Z",
+      "updatedAt": "2026-05-21T17:28:46.275Z"
+    }
+  }
+]

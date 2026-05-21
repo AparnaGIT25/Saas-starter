@@ -1,0 +1,79 @@
+[
+  {
+    "step": "Pending invite exists",
+    "expected": 409,
+    "actual": 409,
+    "passed": true,
+    "data": {
+      "message": "A pending invite already exists for this email",
+      "error": "Conflict",
+      "statusCode": 409
+    }
+  },
+  {
+    "step": "Invalid token",
+    "expected": 404,
+    "actual": 404,
+    "passed": true,
+    "data": {
+      "message": "Invalid invite token",
+      "error": "Not Found",
+      "statusCode": 404
+    }
+  },
+  {
+    "step": "Wrong email",
+    "expected": 403,
+    "actual": 403,
+    "passed": true,
+    "data": {
+      "message": "This invite was sent to a different email address",
+      "error": "Forbidden",
+      "statusCode": 403
+    }
+  },
+  {
+    "step": "Token expired",
+    "expected": 410,
+    "actual": 410,
+    "passed": true,
+    "data": {
+      "message": "This invite has expired. Please ask for a new invitation",
+      "error": "Gone",
+      "statusCode": 410
+    }
+  },
+  {
+    "step": "Already a member",
+    "expected": 409,
+    "actual": 409,
+    "passed": true,
+    "data": {
+      "message": "This user is already a member of your organization",
+      "error": "Conflict",
+      "statusCode": 409
+    }
+  },
+  {
+    "step": "Already accepted",
+    "expected": 400,
+    "actual": 400,
+    "passed": true,
+    "data": {
+      "message": "This invite has already been accepted",
+      "error": "Bad Request",
+      "statusCode": 400
+    }
+  },
+  {
+    "step": "Already in org",
+    "expected": 409,
+    "actual": 409,
+    "passed": true,
+    "data": {
+      "message": "You are already a member of an organization",
+      "error": "Conflict",
+      "statusCode": 409
+    }
+  }
+]
