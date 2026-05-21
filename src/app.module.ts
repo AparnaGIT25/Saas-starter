@@ -7,6 +7,8 @@ import { AuthModule } from './auth/auth.module';
 import { InvitesModule } from './invites/invites.module';
 import { UsersModule } from './users/users.module';
 import { OrganizationsModule } from './organizations/organization.module';
+import { BillingModule } from './billing/billing.module';
+
 
 @Module({
   controllers: [AppController],
@@ -17,6 +19,7 @@ import { OrganizationsModule } from './organizations/organization.module';
     UsersModule,
     InvitesModule,
     OrganizationsModule,
+    BillingModule
 
   ],
   providers: [AppService],
