@@ -1,0 +1,28 @@
+[
+  {
+    "step": "Invalid Signature",
+    "expected": 400,
+    "actual": 400,
+    "passed": true,
+    "response": {
+      "message": "Webhook signature verification failed: No signatures found matching the expected signature for payload. Are you passing the raw request body you received from Stripe? \n If a webhook request is being forwarded by a third-party tool, ensure that the exact request body, including JSON formatting and new line style, is preserved.\n\nLearn more about webhook signing and explore webhook integration examples for various frameworks at https://docs.stripe.com/webhooks/signature\n",
+      "error": "Bad Request",
+      "statusCode": 400
+    }
+  },
+  {
+    "step": "Valid Signature (Subscription Deleted)",
+    "expected": 201,
+    "actual": 201,
+    "passed": true,
+    "response": {
+      "received": true
+    }
+  },
+  {
+    "step": "Verify Downgrade to FREE",
+    "expected": true,
+    "actual": true,
+    "passed": true
+  }
+]
