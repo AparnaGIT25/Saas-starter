@@ -1,0 +1,34 @@
+[
+  {
+    "step": "Get Subscription (Before Checkout)",
+    "expected": 200,
+    "actual": 200,
+    "passed": true,
+    "data": {
+      "plan": "FREE",
+      "stripeSubscriptionId": null,
+      "currentPeriodEnd": null
+    }
+  },
+  {
+    "step": "Create Checkout Session (PRO)",
+    "expected": 201,
+    "actual": 201,
+    "passed": true,
+    "data": {
+      "url": "https://checkout.stripe.com/c/pay/cs_test_a1LPdaWFrOn1KLOk4ThtkmkFRBwcn9QOBPuaaev12oN6RRIKWz4avnwI3h#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWnFgdnFaMDRRX2NLcVdHZjNjM2FvakFhd1ZkTEdiQVVzXWxrbDVGbWZzY0s9YUZWRGxWXXZqYlJCT3UzbGRxVWc0THc8f2hTYkZ9MW5LaD1nY01KcHZyR0A0Z2F1MXc1NWh0bkw9ZnNpJyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl"
+    }
+  },
+  {
+    "step": "Create Billing Portal",
+    "expected": [
+      201,
+      400
+    ],
+    "actual": 201,
+    "passed": true,
+    "data": {
+      "url": "https://billing.stripe.com/p/session/test_YWNjdF8xVFpmTnRSQmM2ZjZkam9ELF9VWW5iY29rUG1ieTZEVEV2MXA0bmc5TWdjVDBqVU4401009TAIR8Bg"
+    }
+  }
+]
