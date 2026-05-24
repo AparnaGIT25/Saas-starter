@@ -9,7 +9,6 @@ import { UsersModule } from './users/users.module';
 import { OrganizationsModule } from './organizations/organization.module';
 import { BillingModule } from './billing/billing.module';
 
-
 @Module({
   controllers: [AppController],
   imports: [
@@ -19,9 +18,8 @@ import { BillingModule } from './billing/billing.module';
     UsersModule,
     InvitesModule,
     OrganizationsModule,
-    BillingModule
-
+    BillingModule,
   ],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

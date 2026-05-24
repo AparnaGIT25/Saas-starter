@@ -6,25 +6,25 @@ import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-    constructor(
-        private configService: ConfigService,
-        private usersService: UsersService,
-    ) {
-        super({
-            jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-            ignoreExpiration: false,
-            secretOrKey: configService.get<string>('JWT_SECRET')!,  // ← add ! and <string>
-        });
-    }
+  constructor(
+    private configService: ConfigService,
+    private usersService: UsersService,
+  ) {
+    super({
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      ignoreExpiration: false,
+      secretOrKey: configService.get<string>('JWT_SECRET')!, // ← add ! and <string>
+    });
+  }
 
-    async validate(payload: { sub: string; email: string; role: string }) {
-        const user = await this.usersService.findById(payload.sub);
-        if (!user) throw new UnauthorizedException();
+  async validate(payload: { sub: string; email: string }) {
+    const user = await this.usersService.findById(payload.sub);
+    if (!user) throw new UnauthorizedException();
 
-        // Always read role from DB, not token
-        // Why? If admin gets demoted, old token still says ADMIN
-        // Reading from DB means the change takes effect immediately
-        const { password, ...result } = user;
-        return result; // this becomes req.user — includes role from DB
-    }
+    // Always read role from DB, not token
+    // Why? If admin gets demoted, old token still says ADMIN
+    // Reading from DB means the change takes effect immediately
+    const { password, ...result } = user;
+    return result; // this becomes req.user — includes role from DB
+  }
 }

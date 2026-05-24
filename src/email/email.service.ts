@@ -1,29 +1,29 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Resend } from 'resend';
 
 @Injectable()
 export class EmailService {
-    private resend: Resend;
+  private resend: Resend;
 
-    constructor(private config: ConfigService) {
-        this.resend = new Resend(this.config.get('RESEND_API_KEY'));
-    }
+  constructor(private config: ConfigService) {
+    this.resend = new Resend(this.config.get('RESEND_API_KEY'));
+  }
 
-    async sendInviteEmail(
-        toEmail: string,
-        orgName: string,
-        inviterName: string,
-        token: string,
-    ) {
-        const frontendUrl = this.config.get('FRONTEND_URL');
-        const inviteUrl = `${frontendUrl}/accept-invite?token=${token}`;
+  async sendInviteEmail(
+    toEmail: string,
+    orgName: string,
+    inviterName: string,
+    token: string,
+  ) {
+    const frontendUrl = this.config.get('FRONTEND_URL');
+    const inviteUrl = `${frontendUrl}/accept-invite?token=${token}`;
 
-        await this.resend.emails.send({
-            from: 'onboarding@resend.dev',
-            to: toEmail,
-            subject: `You are invited to join ${orgName}`,
-            html: `
+    const { data, error } = await this.resend.emails.send({
+      from: 'onboarding@resend.dev',
+      to: toEmail,
+      subject: `You are invited to join ${orgName}`,
+      html: `
         <div style="font-family:Arial,sans-serif;max-width:500px;margin:0 auto">
           <h2>You have been invited!</h2>
           <p>
@@ -51,6 +51,10 @@ export class EmailService {
           </p>
         </div>
       `,
-        });
+    });
+
+    if (error) {
+      throw new BadRequestException(error.message);
     }
+  }
 }
